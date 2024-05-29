@@ -1,0 +1,15 @@
+{
+  "name": "hackathonnotebooks",
+  "version": "1.0.0",
+  "description": "This demo is part of the Warmup series of demos/workshops for our [HackAIThon Q1 2024](https://wiki.one.int.sap/wiki/display/prodandtech/Hackathon+2024+-+SAP+CX+Commerce+and+Consumer+Industries)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
