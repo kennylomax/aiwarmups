@@ -1,0 +1,8 @@
+digraph {
+	node [fontsize=9 height=0.2 shape=circle width=0.2]
+	A [fillcolor=lightgray shape=box style=filled]
+	B [fillcolor=lightgray shape=box style=filled]
+	2.01 [fillcolor=green style=filled]
+	A -> 2.01 [color=red penwidth=0.13597829239827688 style=solid]
+	B -> 2.01 [color=red penwidth=0.3164356300180796 style=solid]
+}
