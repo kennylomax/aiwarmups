@@ -1,0 +1,37 @@
+site_name: AI Warmups
+extra_css:
+  - stylesheets/custom.css
+markdown_extensions:
+  - def_list
+  - attr_list
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - content.code.copy
+    - toc.integrate 
+plugins:
+    - mknotebooks
+    - search
+    - mkdocs-video:
+        is_video: True
+        video_autoplay: False
+        video_muted: True
+        video_controls: True
+        css_style:
+            width: "50%"
+nav:
+    - 'Intro': 'README.ipynb'
+    - 'ML For Dummies': 'MLForDummiesREADME.ipynb' 
+    - 'Training and using ML Models in Minutes': 'TrainingAndUsingMLInMinutesREADME.ipynb'
+    - 'How Neural Networks Learn ': 'HowNNsLearnREADME.ipynb'
+    - 'Chatting with your Data': 'ChattingWithYourDataREADME.ipynb'
+    - 'Installing Joule with Docker': 'JouleDockerREADME.ipynb'
+    - 'Neat from the ground up': 'NEAT.ipynb'
+    - 'Reinforcement Learning': 'ReinforcementLearning.ipynb'  
+    - '(Installing Joule on BTP Scripted)': 'JouleScriptsREADME.ipynb'
+    - '(Installing Joule on BTP Manually)': 'JouleREADME.ipynb'
+
+    

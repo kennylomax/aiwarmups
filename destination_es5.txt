@@ -1,0 +1,7 @@
+UserName=D061192
+Password=Joule4Me!
+URL=https://sapes5.sapdevcenter.com/sap/opu/odata/sap
+Name=ES5
+ProxyType=Internet
+Type=HTTP
+Authentication=BasicAuthentication

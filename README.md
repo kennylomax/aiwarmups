@@ -1,9 +1,5 @@
-# HackAIthon Warmups 
+# HackAIthon Warmups - SAP Customer and Consumer Industries Garage 
 
-These demos are written as jupyter notebooks.  To run these yourself..
+This is part of the AI Warmup series of demos/workshops.
 
-- install python : https://www.python.org
-- install jupyter labs https://jupyter.org/install
-- git clone https://github.com/kennylomax/aiwarmups.git
-- cd aiwarmups
-- jupyter nbclassic
+Documentation @ https://pages.github.tools.sap/D061192/hackathonnotebooks/

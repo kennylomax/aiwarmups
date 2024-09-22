@@ -1,0 +1,1323 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ChattingWithYourDataREADME/">
+      
+      
+        <link rel="next" href="../NEAT/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Installing Joule with Docker - AI Warmups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#joule-installation-with-docker-and-initial-use-cases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Warmups" class="md-header__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Warmups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installing Joule with Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Warmups" class="md-nav__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AI Warmups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MLForDummiesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML For Dummies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TrainingAndUsingMLInMinutesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training and using ML Models in Minutes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HowNNsLearnREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Neural Networks Learn 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChattingWithYourDataREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatting with your Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Installing Joule with Docker
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Installing Joule with Docker
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#related-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#necessary-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Necessary Prerequisites:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-run-this-journey-yourself-in-jupyter" class="md-nav__link">
+    <span class="md-ellipsis">
+      To run this journey yourself in Jupyter..
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joule-installation-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joule installation with Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Joule installation with Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-into-joule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log into Joule...
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirm-you-are-logged-into-joule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirm you are logged into joule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-3-destinations-for-our-joule-examples-in-your-btp-subaccount" class="md-nav__link">
+    <span class="md-ellipsis">
+      Define 3 Destinations for our Joule examples, in your BTP Subaccount
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Define 3 Destinations for our Joule examples, in your BTP Subaccount">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-the-destinations-into-btp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import the Destinations into BTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-joule-demo-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the joule demo repo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-joule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launch Joule:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activate-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activate debug mode..
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-joule-in-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launch Joule in debug mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further examples:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joules-faq-forum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Joules FAQ Forum:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEAT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neat from the ground up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleScriptsREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Scripted)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Manually)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<html><head><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+</head><body><div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="AIwarmups.png" src="5a91dcde-111c-4e04-8730-dd9c59590ee4.png"></p>
+<p>On github @ <a href="https://github.tools.sap/D061192/hackathonnotebooks">Github Docu</a></p>
+<h1 id="joule-installation-with-docker-and-initial-use-cases">Joule - installation with Docker and initial use cases</h1>
+<p>A step-by-step guide to </p>
+<ul>
+<li>install Joule on BTP with Docker in ~6 minutes</li>
+<li>deploy the Joule examples github.tools.sap/DAS-Samples/joule-functions-example.git</li>
+<li>dig deeper into the Joule code</li>
+</ul>
+<h2 id="related-links">Related Links</h2>
+<ul>
+<li>A Video of me (Ken Lomax) going through this journey is <a href="https://video.sap.com/media/t/1_q8r38d43">here</a></li>
+<li><img alt="Screenshot 2024-08-02 at 17.27.09.png" src="0ecd0796-0b92-4e85-b01e-eb0faafd460f.png"></li>
+<li>A Video describing Joule Functions, from Joule Architect Stephan Bender is <a href="https://video.sap.com/media/t/1_dd9knzd5/145787301">here</a></li>
+<li>Github with Joule code is <a href="https://github.tools.sap/DAS-Samples/joule-functions-example.git">here</a></li>
+<li><a href="https://help.sap.com/docs/digital-assistant/service-guide/what-is-sap-digital-assistant">SAP Digital Assistant</a></li>
+<li><a href="https://workzone.one.int.sap/site#workzone-home&amp;/groups/bj5ax8gAxEkFxGXcO8EIWK/overview_page/vNicxRJwwF4UdWgR0KlGIi">Workzone page</a></li>
+<li><a href="https://github.tools.sap/DAS/bot-developers-hands-on">Hands-on</a></li>
+<li><a href="https://sap.stackenterprise.co/posts/tagged/5107">Joule@Stack</a></li>
+</ul>
+<h2 id="necessary-prerequisites">Necessary Prerequisites:</h2>
+<p>You have:</p>
+<ul>
+<li>docker installed</li>
+<li>created a global account in <a href="https://cp-control-client-uc2.cfapps.sap.hana.ondemand.com/index.html">Canary - Public Cloud Feature Set B</a> as shown in  <a href="https://video.sap.com/media/t/1_44yjywhu">this 1 minute video</a><ul>
+<li>It is important you choose the same options as shown in that video.</li>
+<li>The name of the account should have letters and numbers only (no '-' '_' etc)</li>
+</ul>
+</li>
+</ul>
+<h2 id="to-run-this-journey-yourself-in-jupyter">To run this journey yourself in Jupyter..</h2>
+<ul>
+<li>install <a href="https://jupyter.org/install">Jupyter</a></li>
+<li>install <a href="https://github.com/takluyver/bash_kernel">Jupyter bash kernel</a> (so you can select the bash kernel in Jupyter)</li>
+<li>git clone https://github.tools.sap/D061192/hackathonnotebooks.git</li>
+<li>jupyter lab hackathonnotebooks/docs/JouleDockerREADME.ipynb</li>
+<li>Select the bash kernel within Jupyter, then follow the journey :)</li>
+</ul>
+<h2 id="joule-installation-with-docker">Joule installation with Docker</h2>
+<p>Personalize BTPGLOBALACCOUNT and BTP_MY_EMAIL in the following command, then run it directly on your laptop (not in Jupyter)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<pre><code>docker run -it --rm -e BTPGLOBALACCOUNT=20240731b -e BTP_MY_EMAIL=ken.lomax@sap.com kenlomax/aiwarmup_toinstalljouleonbtp:v5
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>You can watch the progress in the terminal, and also in the BTP cockpit.  </li>
+<li>If there are errors/infinite waits, it is best to delete both subaccounts in your global account, and try again. </li>
+<li>If the installation runs without errors, it should end with the line "joule login ..." that you should copy and run in the next step..</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="background">Background</h3>
+<p><img alt="Screenshot 2024-07-30 at 09.20.32.png" src="03d7ac21-8e88-474d-897c-4e7fa35bd52e.png"></p>
+<p><img alt="Screenshot 2024-07-30 at 09.32.53.png" src="e297489f-b6c5-4c7e-ac45-eb96bda993b1.png"></p>
+<h3 id="log-into-joule">Log into Joule...</h3>
+<p>Copy and run the "joule login ..." command printed at the end of the docker output, directly in a laptop terminal.</p>
+<h3 id="confirm-you-are-logged-into-joule">Confirm you are logged into joule</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule status
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="define-3-destinations-for-our-joule-examples-in-your-btp-subaccount">Define 3 Destinations for our Joule examples, in your BTP Subaccount</h2>
+<p>1) An endpoint for Weather</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">mkdir ~/jouledemo
+pushd ~/jouledemo
+pwd
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">cat &amp;lt;&lt;eot&gt; destination_weather.txt
+Name=WEATHER 
+URL=https://api.weather.com/v3 
+ProxyType=Internet 
+Type=HTTP 
+URL.queries.apiKey=c322ef22435d40bfa2ef22435df0bfbe 
+Authentication=NoAuthentication 
+EOT
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2) An endpoint for Products
+In the products demo, we use an OData service to fetch product data. The service is provided by the SAP Gateway Demo System ES5. To access the service, you need to register an account: Sign up for a demo account on ES5 <a href="https://register.sapdevcenter.com/SUPSignForms">here</a>   Personalize, then create the ES5 destination file. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># Personalize the UserName and Pasword entries before running this block..
+
+cat &amp;lt;&lt;eot&gt; destination_es5.txt
+User=D066192
+Password=asdkjaskdhkajsd
+URL=https://sapes5.sapdevcenter.com/sap/opu/odata/sap
+Name=ES5
+ProxyType=Internet
+Type=HTTP
+Authentication=BasicAuthentication
+EOT
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>3) An endpoint for Jokes</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">cat &amp;lt;&lt;eot&gt; destination_jokes.txt
+Name=JOKESAPI
+URL=https://v2.jokeapi.dev
+ProxyType=Internet 
+Type=HTTP 
+EOT
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="import-the-destinations-into-btp">Import the Destinations into BTP</h3>
+<p>The block below provide a URL that takes you directly to the Import Destination page in BTP.  To get your personal URL, set the BTPGLOBALACCOUNT to equal the name of your BTP Global Account..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># Personalize this to equal the name of your BTP Global Account..
+export BTPGLOBALACCOUNT=20240731b
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">btp logout
+btp login --sso --url https://canary.cli.btp.int.sap --subdomain $BTPGLOBALACCOUNT
+
+export BTP_GLOBAL_ACCOUNT_ID=`btp get accounts/global-account --global-account $BTPGLOBALACCOUNT | grep "global account id" | awk '{print $4;}'` 
+export BTP_EU12_SUBACCOUNT_ID=`btp list accounts/subaccount | grep EU12 | awk '{print $1;}'`
+
+echo "BTP_GLOBAL_ACCOUNT_ID : $BTP_GLOBAL_ACCOUNT_ID"
+echo "BTP_EU12_SUBACCOUNT_ID : $BTP_EU12_SUBACCOUNT_ID"
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">echo "Go to https://canary.cockpit.btp.int.sap/cockpit/#/globalaccount/$BTP_GLOBAL_ACCOUNT_ID/subaccount/$BTP_EU12_SUBACCOUNT_ID/destinations and import the files $(pwd)/destination*.txt"
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-07-24 at 12.30.10.png" src="f68624f9-8f9a-4e37-9915-9cc06eb92399.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="clone-the-joule-demo-repo">Clone the joule demo repo</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Create a github token at https://github.tools.sap/settings/tokens <strong>with repo rights</strong> and export to MY_GITHUB_TOKEN:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">#export MY_GITHUB_TOKEN=your_github_token_with_repo_right
+export MY_GITHUB_TOKEN=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
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Clone the Joule examples</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">git clone https://$MY_GITHUB_TOKEN@github.tools.sap/DAS-Samples/joule-functions-example.git
+pushd joule-functions-example/capabilities
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">pwd
+mkdir -p greetings/functions
+mkdir -p greetings/scenarios
+
+cat &amp;lt;&lt;eot&gt; greetings/scenarios/send_greetings.yaml
+description: This function greets the user and includes the town in the greeting
+slots:
+  - name: name
+    description: The name of the person to be greeted
+  - name: town
+    description: The town where the person lives
+target:
+  type: function
+  name: send_greetings
+EOT
+
+cat &amp;lt;&lt;eot&gt; greetings/functions/send_greetings.yaml
+parameters:
+  - name: name
+    optional: false
+  - name: town
+    optional: false
+action_groups:
+  - condition: true
+    actions:
+      - type: message
+        message: 
+            type: text 
+            content: "Greetings &lt;? name ?&gt; from &lt;? town ?&gt; 31 July!"
+EOT
+
+cat &amp;lt;&lt;eot&gt; greetings/capability.sapdas.yaml
+schema_version: 3.3.0
+metadata:
+  namespace: com.sap.das.demo
+  name: greetings_capability
+  version: 1.0.0
+  display_name: "Greetings Capability"
+  description: This capability sends greetings.
+EOT
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">mkdir -p gday/functions
+mkdir -p gday/scenarios
+
+cat &amp;lt;&lt;eot&gt; gday/scenarios/gday_scenario.yaml
+description: This function sends casual salutations to the user
+slots:
+  - name: name
+    description: The name of the person to be greeted
+  - name: place
+    description: The place where the person lives
+target:
+  type: function
+  name: gday_fn
+
+response_context:
+  - value: name
+    description: the name of the user
+  - value: place
+    description: the place the user is located
+  - value: answer
+    description: the answer to show the user
+EOT
+
+cat &amp;lt;&lt;eot&gt; gday/functions/gday_fn.yaml
+parameters:
+  - name: name
+    optional: false
+  - name: place
+    optional: false
+action_groups:
+  - actions:
+      - type: api-request
+        method: GET
+        system_alias: JokesService
+        path: /joke/Any?safe-mode
+        result_variable: joke_result
+#      - type: message
+#        message:
+#          type: text
+#          content: "Gday gday!! &lt;? name ?&gt; from &lt;? place ?&gt;.. I say I say I say.. &lt;? joke_result.body.type == 'single' ? joke_result.body.joke : joke_result.body.setup + '  '+ joke_result.body.delivery ?&gt;"      
+      - type: set-variables
+        scripting_type: spel
+        variables:
+          - name: answer
+            value: "I say I say I say.. &lt;? joke_result.body.type == 'single' ? joke_result.body.joke : joke_result.body.setup + '  '+ joke_result.body.delivery ?&gt;"  
+result:
+  name: &lt;? name ?&gt;
+  place: &lt;? place ?&gt;
+  answer:  &lt;? answer ?&gt;
+EOT
+
+cat &amp;lt;&lt;eot&gt; gday/capability.sapdas.yaml
+schema_version: 3.3.0
+metadata:
+  namespace: com.sap.das.demo
+  name: gday_capability
+  version: 1.0.0
+  display_name: "Gday Capability"
+  description: This capability sends gday message.
+system_aliases:
+  JokesService:
+    destination: JOKESAPI
+EOT
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># When you compile an application, specify which scenarios it will have..
+cat &amp;lt;&lt;eot&gt; da.sapdas.yaml
+schema_version: 1.0.0
+capabilities:
+  - type: local
+    folder: ./greetings
+  - type: local
+    folder: ./gday
+  - type: local
+    folder: ./weather
+  - type: local
+    folder: ./products
+EOT
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Deploy the Joule examples</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">#joule list
+
+#pwd
+
+joule deploy -c -n "demo"
+
+#joule list
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Try some example joule dialogs from the command line:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">#joule dialog demo "how is it in Paris today?"
+
+# joule dialog demo "and how about in Munich?"
+
+joule dialog demo "Send casual salutations to Ken from Crowthorne"
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule dialog demo "I love barry manilow"
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="launch-joule">Launch Joule:</h2>
+<p>Run the following command and follow this path to reach your joule app..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-07-17 at 16.19.53.png" src="0d9f2438-7b7f-4d18-98b8-d73ec4a82f3e.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule launch demo
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="activate-debug-mode">Activate debug mode..</h2>
+<p>Now that you have created(activated?) your Joule user account, you can pimp it with debugging rights..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># Extract the user ID of your custom identity provider
+btp list security/user --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID | head -2 | tail -1
+export BTP_EU12_IDP_USER_ID=`btp list security/user --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID | head -2 | tail -1`
+echo "BTP_EU12_IDP_USER_ID is:" $BTP_EU12_IDP_USER_ID
+
+# Assign our role-collection to our IAS user 
+btp assign security/role-collection joulesuperpowers --to-user $BTP_EU12_IDP_USER_ID --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="launch-joule-in-debug-mode">Launch Joule in debug mode</h2>
+<p>Launch Joule again (possibly in incognito mode to avoid cookie messiness)</p>
+<p>Widen the UI (to be sure all buttons are shown) and you should then see a debug button in the joule client window</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule launch demo
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-06-27 at 09.38.22.png" src="f2669abe-20fb-44fc-964f-185c0135868b.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">## Try it out
+
+Explore the scenarios and "talk" with them via Joules..
+
+For example:
+
+Search products
+Notebooks
+Notebook 1 
+
+
+or:
+How is the weather in Munich
+And how about in London?
+
+or:
+Send greetings to Bob
+
+or:
+Send casual salutations to Bob from Boston
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="testing">Testing</h2>
+<p>As per <a href="https://github.tools.sap/DAS-Samples/joule-functions-example">current Docu</a>: "Please be aware that the <strong>current implementation of the Cucumber/Gherkin test framework is not yet fully working with the generated LLM responses</strong> in the new Joule architecture. Support for this is planned for the future, therefore we skip explaining tests here in these tutorials."</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="next-steps">Next steps:</h2>
+<ul>
+<li>Try the Joule IDE plugin @ https://help.sap.com/docs/joule/service-guide/joule-ide-extension?locale=en-US</li>
+<li>Joule docu: https://wiki.one.int.sap/wiki/display/OPECFKM/Joule</li>
+<li>Using Joule's Web Client is described here: https://github.tools.sap/DAS/webclient</li>
+</ul>
+<h2 id="further-examples">Further examples:</h2>
+<ul>
+<li>Errors during installation -&gt; https://itsm.services.sap/sp?id=sc_category</li>
+<li>Study the Joule tutorial in more depth <a href="https://github.tools.sap/DAS-Samples/joule-functions-example.git">here</a></li>
+<li><a href="https://sap.sharepoint.com/sites/102567/_layouts/15/stream.aspx?id=%2Fsites%2F102567%2FShared%20Documents%2F2%2E%20Solution%20Assets%2FJoule%2FEnablement%20tutorials%2F%5BAI%40SLF%5D%20Chocolearn%2D20231205%5F163131%2DMeeting%20Recording%2Emp4&amp;referrer=StreamWebApp%2EWeb&amp;referrerScenario=AddressBarCopied%2Eview%2Eae40a47e%2D97ac%2D46c7%2Dba4a%2Dcda0d3d15524">Video demoing how to create an initial Joules and Chuck Norris chat</a> </li>
+<li><a href="https://sap.sharepoint.com/:v:/r/sites/102567/Shared%20Documents/2.%20Solution%20Assets/Joule/Enablement%20tutorials/SAP%20Digital%20Assistant%20-%20Adding%20a%20Weather%20Capability.mp4?csf=1&amp;web=1&amp;e=Lpk1vJ">Video demoing how to add a Weather Capability by Timothy Jannsen and Nathan Droba</a> and <a href="https://workzone.one.int.sap/site#workzone-home&amp;/groups/bj5ax8gAxEkFxGXcO8EIWK/workpage_tabs/aVDrYRMybHgAyWmmyb5mRk">setup</a></li>
+<li>HackAiThon PoC from Team Mind Flayers @</li>
+<li>Using<ul>
+<li>Destination</li>
+<li>URL=https\://backoffice.xxxx.model-t.myhybris.cloud/odata2webservices</li>
+<li>Name=D43_COMMERCE</li>
+<li>ProxyType=Internet</li>
+<li>Type=HTTP</li>
+<li>Authentication=BasicAuthentication</li>
+<li>User=admin</li>
+</ul>
+</li>
+<li>https://wiki.one.int.sap/wiki/display/prodandtech/AI+Talk%3A+Building+a+CX+Integration+Assistant+with+Joule</li>
+<li>https://wiki.one.int.sap/wiki/display/prodandtech/HackAIthon+PoC+from+Team+Mind+Flayers</li>
+<li>This journey was constructed by following various documents from [here](https://help.sap.com/docs/joule/service-guide/initial-set-up?</li>
+</ul>
+<h2 id="joules-faq-forum">Joules FAQ Forum:</h2>
+<ul>
+<li>Questions on Joule: ask questions on stackenterprise, and add a joule tag:  https://sap.stackenterprise.co/
+locale=en-US)</li>
+</ul>
+</div>
+</div>
+</div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>

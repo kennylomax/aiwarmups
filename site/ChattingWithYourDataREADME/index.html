@@ -1,0 +1,1181 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../HowNNsLearnREADME/">
+      
+      
+        <link rel="next" href="../JouleDockerREADME/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>Chatting with your Data - AI Warmups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tllmdr-turbocharging-your-llms-and-chatting-with-your-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Warmups" class="md-header__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Warmups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chatting with your Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Warmups" class="md-nav__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AI Warmups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MLForDummiesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML For Dummies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TrainingAndUsingMLInMinutesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training and using ML Models in Minutes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HowNNsLearnREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Neural Networks Learn 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chatting with your Data
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleDockerREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Joule with Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEAT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neat from the ground up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleScriptsREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Scripted)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Manually)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<html><head><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+</head><body><div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="AIwarmups.png" src="27fa3d1a-c444-428b-910f-357d1447c6b5.png"></p>
+<p>On github @ <a href="https://github.tools.sap/D061192/hackathonnotebooks">Github Docu</a></p>
+<h1 id="tllmdr-turbocharging-your-llms-and-chatting-with-your-data">TLLM;DR - Turbocharging your LLMs and Chatting with your Data</h1>
+<p>An AI journey on Chatting with your Data... </p>
+<p>To run yourself:</p>
+<ul>
+<li>install python: https://www.python.org  </li>
+<li>install Jupyter: https://jupyter.org/install</li>
+<li>git clone https://github.tools.sap/D061192/hackathonnotebooks.git</li>
+<li>jupyter lab hackathonnotebooks/docs/ChattingWithYourDataREADME.ipynb</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="goal-of-this-journey">Goal of this journey..</h1>
+<p>To..</p>
+<ul>
+<li>give HackAiThoners some LLM context,</li>
+<li>some hands-on examples of "Chatting with your Data", and</li>
+<li>plant some ideas for possible devious and cunning PoCs.</li>
+</ul>
+<h1 id="agenda">Agenda:</h1>
+<ul>
+<li>LLMs the big picture</li>
+<li>Demystifying <strong>Vectors</strong> and <strong>Embeddings</strong> </li>
+<li>Introduce various frameworks</li>
+<li><a href="https://platform.openai.com">OpenAI</a>: an AI research and deployment company, whose mission is to ensure that artificial general intelligence benefits all of humanity(!)</li>
+<li><a href="https://huggingface.co">HuggingFace</a>: The AI Community's Hub</li>
+<li><a href="https://serpapi.com">SerpApi</a>: Google Search via APIs</li>
+<li><a href="https://python.langchain.com">LangChain</a>: an open source framework for pairing LLMs with external data</li>
+<li><a href="https://docs.smith.langchain.com/tracing">LangSmith</a>: LangChain's tracing/debugging tool</li>
+<li>Explore some basic use cases </li>
+<li>Write a Commandline Application, that uses our own pdf, txt and word docs. </li>
+<li>Explore a Web Application with similar functionality that we could use as a baseline to modify</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="prerequisites-to-follow-this-journey-yourself">Prerequisites to follow this journey yourself:</h1>
+<ul>
+<li>Create accounts and keys/tokens at</li>
+<li>LangSmith: https://smith.langchain.com </li>
+<li>OpenAPIKey: https://platform.openai.com/api-keys </li>
+<li>HuggingFaceToken: https://huggingface.co/settings/tokens</li>
+<li>SerpApiKey: https://serpapi.com/dashboard</li>
+<li>LangChainAPIKey: https://python.langchain.com/docs/get_started/quickstart</li>
+<li>install and launch Jupyter Labs: https://jupyter.org/install</li>
+<li>git clone https://github.tools.sap/D061192/hackathonnotebooks.git</li>
+<li>cd hackathonnotebooks</li>
+<li>jupyter lab</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="llms-the-big-picture">LLMs - the big picture</h1>
+<p>Try LLMS on SAP at
+- <a href="https://ai-playground.cfapps.sap.hana.ondemand.com">SAP's playground</a>
+- <a href="https://sapit-core-playground-vole.ai-launchpad.prod.eu-central-1.aws.apps.ml.hana.ondemand.com/aic/index.html#/generativeaihub?workspace=sap-genai-xl&amp;resourceGroup=default&amp;/g/prompteditor">SAP's GenAI experience lab</a>
+ - <a href="https://gpt-demo.internal.cfapps.eu12.hana.ondemand.com">SAP's GPT-4 Demo</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-05-03 at 11.57.22.png" src="096fbb56-870c-4fd4-9ee2-00851de4f7c2.png"></p>
+<p>Overview (particularly for LangChain) - more at https://www.youtube.com/watch?v=aywZrzNaKjs</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="vectors-embeddings-demystified">Vectors, Embeddings demystified</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At the heart of LLMs are Neural Networks.  And Neural Networks deal with NUMBERs... (Not words..)</p>
+<h3 id="the-challenge-how-to-represent-words-using-numbers">The challenge: "How to represent words using numbers?"</h3>
+<p>(This insight is about 20 years old(!))<br>
+Watch cool youtube explaining this  https://www.youtube.com/watch?v=sCclS-emHiU</p>
+<p>Option 1: Simply number the Dictionary entries 1 by 1..</p>
+<ul>
+<li><img alt="Screenshot 2024-02-28 at 14.35.14.png" src="11ee6ba0-3b98-48d4-b662-ee62c1dd91c3.png"></li>
+<li>Provides unique mappings which is good</li>
+<li>BUT this</li>
+<li>will convey numerical meaning to words which we don't want..</li>
+<li>will Interfere with matrix operations</li>
+<li>Implies that (for example) an abacus minus an aback is an aardvark...</li>
+</ul>
+<p>Option 2: Use "One-hot encoding"..</p>
+<p><img alt="Screenshot 2024-02-28 at 14.36.08.png" src="666cb7b0-ce26-42f7-95c3-9dd8d4914009.png">
+- Again provides unique mappings
+- BUT these encodings have no relation at all to the <strong>meaning/semantics</strong> of the words</p>
+<p>Option 3: Use one-hot encoding AND neural networks to ?
+- Perhaps a neural network can learn the context/meaning of words? 
+- An initial challenge: "Given a word, what is the next most likely word in a sentence"
+- <img alt="Screenshot 2024-02-28 at 14.38.55.png" src="d53d5db7-a41c-490d-815a-c0abbaa6ed24.png">
+- Wikpedia has sentences with about 4 Billion words, so we have enough training data..
+- <img alt="Screenshot 2024-02-28 at 14.49.26.png" src="aee58735-98d3-443b-b3b1-1a1b09e00274.png">
+- train this with  500 million sentences, we will get half decent results..
+- the <strong>weights for any particular word</strong> will in some way represent the meaning of the word..
+- but we can do better..</p>
+<p>Option 4: "You shall know a word by the company it keeps.." (John Firth, Cambdridge University, 1962)
+  - Take several neighbouring words and predict the missing word in the middle
+  - Similar words from similar sentences will be surrounded by similar words..
+    - <img alt="Screenshot 2024-05-02 at 13.54.28.png" src="3e58346e-9bb8-4b8e-b17e-51686a6dc8d9.png">
+  - We train this with millions/billions of sentences and back propogation/training will cause convergence in weights, and at some point the weights become stable..
+  - At this point <strong>the weights to the hidden layer for similar words will have similar values</strong>..
+  - <img alt="Screenshot 2024-02-29 at 17.00.40.png" src="60c99e34-73dc-4131-9544-863f5a9cab6b.png">
+  - <strong>These weights become the (300 dimensional) vector for a word..</strong>
+    - <img alt="Screenshot 2024-02-28 at 14.52.33.png" src="4faecb46-2260-49e7-a7bf-062dd97fec10.png">
+  - AND <strong>these vectors have semantic relevance</strong>
+  - Locations in this vector space represent meanings. If you are near location x,y,z you have meaning abc.
+  - Vectors that are close to each other, will have similar meaning!
+  - Easier to think about this if we consider 3 (not 300) dimensional space..
+  - Useful illustration:
+    - https://youtu.be/DINUVMojNwU?si=B9tyRMKRFwW12pRk&amp;t=807
+  - King - Man + Woman = Queen!
+      - <img alt="Screenshot 2024-02-28 at 15.05.03.png" src="35eb502d-3fb5-4731-88b4-e0df0be2f3fb.png">
+      - <img alt="Screenshot 2024-02-28 at 15.25.43.png" src="388e0c38-8494-42f5-a033-b3d1eaf0f5c6.png">
+      - <img alt="Screenshot 2024-02-28 at 15.29.54.png" src="a8ffae75-747b-495f-a72c-40a48beff7ec.png"></p>
+<p>LLMS use such vectors (embeddings) to encode the "meaning" of words..</p>
+<p><img alt="Screenshot 2024-03-01 at 11.10.51.png" src="29a2f6e2-089a-4db8-b45a-573bc3b80f45.png"></p>
+<p>There is a lot more that goes on, but this hopefully helps demystify some of it..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="using-llms-with-python-langchain">Using LLMs with Python, Langchain, ..</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="import-libraries">Import Libraries</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">import os
+os.environ['OPENAI_API_KEY'] = "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"
+os.environ['HUGGINGFACE_TOKEN'] = "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"
+os.environ['SERPAPI_API_KEY'] = "5f9e09cda4bc2b5621c9091c47db1727648c545a879c96d64931f54b796844d5"
+os.environ['LANGCHAIN_API_KEY'] = "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"
+os.environ['LANGCHAIN_TRACING_V2'] = "true"
+os.environ['LANGCHAIN_ENDPOINT'] = "https://api.smith.langchain.com"
+os.environ['DEMO_NAME'] = "LLM_FUN_20240704"
+!echo ${DEMO_NAME}
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!pip install --quiet  slack_sdk langchain-openai docx2txt langsmith langchain langchain_experimental numexpr wikipedia tabulate cohere huggingface_hub ipywidgets chromadb google-search-results Xformers tiktoken transformers yt_dlp pydub librosa faiss-cpu yt_dlp  pydub  librosa
+
+import os
+import requests
+import langchain
+from dotenv import load_dotenv
+from typing import List
+from langchain_openai import OpenAI
+from langchain import HuggingFacePipeline, LLMChain
+from langchain.chat_models import ChatOpenAI
+from langchain.schema import  AIMessage, HumanMessage, SystemMessage
+from langchain.output_parsers import PydanticOutputParser
+from langchain.prompts import PromptTemplate
+from langchain.pydantic_v1 import BaseModel, Field, validator
+from langchain.document_loaders import TextLoader,  PyPDFLoader
+from langchain.indexes import VectorstoreIndexCreator
+from langchain.text_splitter import CharacterTextSplitter, RecursiveCharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.chains import RetrievalQA,  ConversationalRetrievalChain
+from langchain.chains.question_answering import load_qa_chain
+from langchain_community.document_loaders import BSHTMLLoader,  UnstructuredHTMLLoader, Docx2txtLoader
+from langchain_community.document_loaders.blob_loaders.youtube_audio import YoutubeAudioLoader
+from langchain_community.document_loaders.generic import GenericLoader
+from langchain.document_loaders.parsers.audio import OpenAIWhisperParser, OpenAIWhisperParserLocal
+from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain_community.vectorstores import FAISS
+from langchain.retrievers import WikipediaRetriever
+from langchain.prompts.chat import ChatPromptTemplate, HumanMessagePromptTemplate
+from langchain.chains import SimpleSequentialChain
+from langchain.agents import load_tools
+from langchain.agents import initialize_agent
+!pip install pypdf
+print ("Finished importing")
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="import-tokenskeys">Import Tokens/Keys</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!pwd
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">load_dotenv()
+
+OPENAI_API_KEY=os.getenv('OPENAI_API_KEY')
+HUGGING_FACE_TOKEN=os.getenv('HUGGINGFACE_TOKEN')
+SERPAPI_API_KEY=os.getenv('SERPAPI_API_KEY')
+LANGCHAIN_API_KEY=os.getenv('LANGCHAIN_API_KEY')
+
+print ("Imported Keys lengths (for sanity check): ", len(OPENAI_API_KEY), len(HUGGING_FACE_TOKEN), len(SERPAPI_API_KEY), len(LANGCHAIN_API_KEY))
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="calling-llms">Calling LLMs</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># This is the same as going to https://chat.openai.com/ and typing 
+llm = OpenAI()
+llm("Show your source of information for each question.  What is barbershop?")
+#llm("Show your source of information for each question.  What is rocknroll?")
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="check-the-trace-on-langsmith">Check the trace on langsmith..</h3>
+<p>https://smith.langchain.com</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="document-loaders">Document Loaders..</h2>
+<p>CVS, HTML, JSON, Markdown, Microsoft Office, PDF, File Directory,...</p>
+<p>https://python.langchain.com/docs/modules/data_connection/document_loaders/</p>
+<h3 id="pdfs">PDFs</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!pwd
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">loaders = [ PyPDFLoader("../mldocs/barbershop.pdf") ]
+documents = []
+for loader in loaders:
+    documents.extend(loader.load())
+
+chainpdf = load_qa_chain(llm=OpenAI(), chain_type="stuff")
+# See https://docs.langflow.org/components/chains  stuff, map_reduce, refine...
+
+#query = "Show your answer and your source of information for each question.  What is barbershop?"
+#query = "Show your answer and your source of information for each question.  What is rocknroll?"
+#chainpdf.run(input_documents=documents, question=query)
+
+# See the trace in langsmith..
+# Try with rocknroll..
+query = "Show your answer and your source of information for each question.  What is rocknroll?"
+chainpdf.run(input_documents=documents, question=query)
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="wikipedia">Wikipedia</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">#### Wikipedia (https://python.langchain.com/docs/integrations/retrievers/wikipedia)
+retriever = WikipediaRetriever()
+docs = retriever.get_relevant_documents(query="Barbara Streisand")
+documents = [docs[0]]
+
+chainwikipedia = load_qa_chain(llm=OpenAI(), chain_type="stuff")
+query = "Show your answer and your source of information for each question. Who is Barbara Streisand?"
+chainwikipedia.run(input_documents=documents, question=query)
+
+### See the trace in langsmith..
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="youtube-audio">Youtube Audio</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-02-27 at 11.11.13.png" src="98d3b7eb-4bff-4555-96d3-300ee673a6e2.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Using Facebook AI Similarity Search (Faiss) -  a library for efficient similarity search and clustering of dense vectors. 
+# Example from https://python.langchain.com/docs/integrations/document_loaders/youtube_audio
+urls = ["https://www.youtube.com/watch?v=DXmiJKrQIvg"]
+#urls = ["https://www.youtube.com/watch?v=v11OJNEdIn8"]
+
+# Directory to save audio files
+save_dir = "./mldocs/YouTube"
+# Transcribe the videos to text
+loader = GenericLoader(YoutubeAudioLoader(urls, save_dir), OpenAIWhisperParser())
+docs = loader.load()
+docs[0].page_content[0:500]
+
+# Combine doc
+combined_docs = [doc.page_content for doc in docs]
+text = " ".join(combined_docs)
+
+# Split them
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
+splits = text_splitter.split_text(text)
+
+# Build an index
+embeddings = OpenAIEmbeddings()
+vectordb = FAISS.from_texts(splits, embeddings)
+
+# Build a QA chain
+chainyoutube = RetrievalQA.from_chain_type(
+    llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0),
+    chain_type="stuff",
+    retriever=vectordb.as_retriever(),
+)
+
+# Ask a question!
+query = "How many ways to QA in langchain?"
+chainyoutube.run(query)
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="wrt-slack">W.r.t. Slack...</h3>
+<p>We are not allowed to export data..
+https://sap.sharepoint.com/sites/126651/SitePages/Data-Export-Policy.aspx</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="multiple-loaders">Multiple Loaders..</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># from https://betterprogramming.pub/building-a-multi-document-reader-and-chatbot-with-langchain-and-chatgpt-d1864d47e339
+documents = []
+loaders = [ 
+    PyPDFLoader("../mldocs/barbershop.pdf"),
+    Docx2txtLoader("../mldocs/glenmiller.docx"), 
+    TextLoader("../mldocs/ella.txt") 
+]
+for loader in loaders:
+    documents.extend(loader.load())
+
+# Split the documents into smaller chunks
+text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
+documents = text_splitter.split_documents(documents)
+
+cmdlinechatchain3 = load_qa_chain(llm=OpenAI(), chain_type="stuff")
+query = "Show your answer and your source of information for each question.  Who is Ella Fitzgerald"
+cmdlinechatchain3.run(input_documents=documents, question=query)
+
+# Note: 
+#  if you pass no documents then LLM uses its "general knowledge".
+#  if you do pass in documents, it uses those only..
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="online-chat-with-multiple-documents-chroma-database-and-history">Online chat with multiple documents, chroma database and history</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># from https://betterprogramming.pub/building-a-multi-document-reader-and-chatbot-with-langchain-and-chatgpt-d1864d47e339
+
+documents = []
+for file in os.listdir("../mldocs"):
+    if file.endswith(".pdf"):
+        loader = PyPDFLoader("../mldocs/" + file)
+    elif file.endswith('.docx') or file.endswith('.doc'):
+        loader = Docx2txtLoader("../mldocs/" + file)
+    elif file.endswith('.txt'):
+        loader = TextLoader("../mldocs/" + file)  
+    elif file.endswith('.csv'):
+        CSVLoader("../mldocs/" + file)
+    documents.extend(loader.load())
+
+# Split the documents into smaller chunks
+text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
+documents = text_splitter.split_documents(documents)
+
+# Convert the document chunks to embedding and save them to the vector store
+vectordb = Chroma.from_documents(documents, embedding=OpenAIEmbeddings(), persist_directory="./data")
+vectordb.persist()
+
+# create our Q&amp;amp;A chain, using the vector db as our source..
+pdf_qa = ConversationalRetrievalChain.from_llm(
+    ChatOpenAI(temperature=0.7, model_name='gpt-3.5-turbo'),
+    retriever=vectordb.as_retriever(search_kwargs={'k': 6}),
+    return_source_documents=True,
+    verbose=False
+)
+
+yellow = "\033[0;33m"
+green = "\033[0;32m"
+white = "\033[0;39m"
+
+chat_history = []
+print(f"{yellow}---------------------------------------------------------------------------------")
+print('Welcome to the DocBot. You are now ready to start interacting with your documents')
+print('---------------------------------------------------------------------------------')
+quitting=False
+while not quitting:
+    query = input("Prompt: ")
+    if query == "exit" or query == "quit" or query == "q" or query == "f":
+        quitting=True
+    else:
+        result = pdf_qa.invoke(  {"question": query, "chat_history": chat_history})
+        print(f"{white}Answer: " + result["answer"])
+        chat_history.append( (query, result["answer"]) )
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="chaining-llm-calls">Chaining LLM calls..</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">first_prompt = PromptTemplate(
+    input_variables=["product"],
+    template="What is a great name for a company that makes {product}?"
+) 
+
+link1 = LLMChain(
+    llm=ChatOpenAI(temperature=0.9), 
+    prompt=first_prompt)
+
+second_prompt = PromptTemplate(
+    input_variables=["company_name"],
+    template="Write a catchphrase for the following company: {company_name}",
+)
+
+link2 = LLMChain(
+    llm=OpenAI(temperature=0), 
+    prompt=second_prompt)
+
+overall_chain = SimpleSequentialChain(chains=[link1, link2], verbose=True)
+
+# Run the chain specifying only the input variable for the first link.
+response = overall_chain.run("warm beer")
+
+print("Catchphrase for your product: ", response)
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="agents-let-the-llm-choose-its-strategy">Agents: let the LLM choose its strategy</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">### LangChain Agents
+# The core idea of agents is to let the language model choose a sequence of actions to take. 
+# In chains, a sequence of actions is hardcoded (in code). 
+# In agents, a language model is used as a reasoning engine to determine which actions to take and in which order.
+
+llm1 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+tools = load_tools([ 
+    "serpapi", # Google search
+    "llm-math" # For doing maths
+    ], llm=llm1)
+
+agent = initialize_agent(tools, llm=llm1,  verbose=True)
+
+agent.run("Who is Jodie Comer's boyfriend? Also tell me what is his current age raised to the 0.43 power?")
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="adapt-a-docker-based-pdf-chat-app-to-your-needs">Adapt a Docker-based PDF Chat App to your needs ?</h1>
+<p>Adapting a website from Hugging Face to your needs..</p>
+<ul>
+<li>Look at this example - it could serve as a great starting point: https://huggingface.co/spaces/sophiamyang/Panel_PDF_QA</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Select Clone Repository in Hugging Face to see how to clone it:
+!mkdir -p ~/hackaithonwarmup/hackaithonwarmup4chat$DEMO_NAME
+!cd ~/hackaithonwarmup/hackaithonwarmup4chat$DEMO_NAME; git clone https://huggingface.co/spaces/sophiamyang/Panel_PDF_QA
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Create a new Docker space in Hugging face, in my case "hackaithonwarmup4dockera"</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Create a new Docker space in Hugging Face (in my case hackaithonwarmup4dockera) @
+#!mkdir -p ~/hackaithonwarmup/hackaithonwarmup4a
+!cd ~/hackaithonwarmup; git clone https://huggingface.co/spaces/kenlomax/hackaithonwarmup4dockera
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="adjust-the-requirements-file">Adjust the requirements file</h3>
+<h5 id="add-langchain_community-to-requirementstxt">Add langchain_community to requirements.txt</h5>
+<p>langchain_community</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Copy and adapt:
+!cp ~/hackaithonwarmup/hackaithonwarmup4chat$DEMO_NAME/Panel_PDF_QA/*  ~/hackaithonwarmup/hackaithonwarmup4dockera
+!ls ~/hackaithonwarmup/hackaithonwarmup4dockera
+# Open the code in jupyter notebook.. 
+# jupyter lab ~/hackaithonwarmup/hackaithonwarmup4a/LangChain_QA_Panel_App.ipynb
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!cd  ~/hackaithonwarmup/hackaithonwarmup4dockera; git remote set-url origin https://kenlomax:$HUGGING_FACE_TOKEN@huggingface.co/spaces/kenlomax/hackaithonwarmup4dockera
+# Push your changes to the hugging face repo:
+!cd ~/hackaithonwarmup/hackaithonwarmup4dockera; git add . ; git commit -m "oooo"; git push
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Adapt to your most cunning and devious of PoCs..
+</code></pre>
+
+
+</div>
+</div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>

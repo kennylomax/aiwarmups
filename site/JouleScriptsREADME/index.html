@@ -1,0 +1,1211 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ReinforcementLearning/">
+      
+      
+        <link rel="next" href="../JouleREADME/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>(Installing Joule on BTP Scripted) - AI Warmups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-joule-on-btp-in-6-minutes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Warmups" class="md-header__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Warmups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              (Installing Joule on BTP Scripted)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Warmups" class="md-nav__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AI Warmups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MLForDummiesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML For Dummies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TrainingAndUsingMLInMinutesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training and using ML Models in Minutes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HowNNsLearnREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Neural Networks Learn 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChattingWithYourDataREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatting with your Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleDockerREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Joule with Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEAT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neat from the ground up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Scripted)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Scripted)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#necessary-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Necessary Prerequisites:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-run-this-journey" class="md-nav__link">
+    <span class="md-ellipsis">
+      To run this journey..
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#videos-of-this-journey-are-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      Videos of this journey are here..
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirm-you-can-call-joule-and-btp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirm you can call joule and btp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personalize-then-run-this-code-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalize then run this code block
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-this-script-on-a-mac-to-install-joule-on-btp-in-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run this script (on a Mac) to install Joule on BTP in ~5 minutes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-into-joule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log into Joule...
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirm-you-are-logged-into-joule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confirm you are logged into joule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-this-destination-in-your-btp-subaccount" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import this Destination in your BTP Subaccount
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-the-destination-into-btp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import the Destination into btp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-the-joule-demo-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the joule demo repo
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Manually)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<html><head><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+</head><body><div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="AIwarmups.png" src="5a91dcde-111c-4e04-8730-dd9c59590ee4.png"></p>
+<p>On github @ <a href="https://github.tools.sap/D061192/hackathonnotebooks">Github Docu</a></p>
+<h1 id="installing-joule-on-btp-in-6-minutes">Installing Joule on BTP in ~6 minutes</h1>
+<p>A step-by-step guide to </p>
+<ul>
+<li>install Joule on BTP with a Mac in ~6 minutes</li>
+<li>use a simple Joule App via CLI and Joule's Web chat app</li>
+<li>dig deeper into the sample Joule App</li>
+</ul>
+<h2 id="necessary-prerequisites">Necessary Prerequisites:</h2>
+<ul>
+<li>install <a href="https://jupyter.org/install">Jupyter</a></li>
+<li>install the <a href="https://github.com/takluyver/bash_kernel">Jupyter bash kernel </a></li>
+<li>create a global account in <a href="https://cp-control-client-uc2.cfapps.sap.hana.ondemand.com/index.html">Canary - Public Cloud Feature Set B</a>.. <ul>
+<li>.. as shown in  <a href="https://video.sap.com/media/t/1_44yjywhu">this 1 minute video</a></li>
+<li>It is important you choose the same options as shown in that video.</li>
+<li>The name of the account should have letters and numbers only (no '-' '_' etc)</li>
+</ul>
+</li>
+<li>install the <a href="http://developers.sap.com/tutorials/cp-sapcp-getstarted..html">BTP CLI</a></li>
+<li>install the <a href="https://help.sap.com/docs/joule/service-guide/install-and-update-command-line-interface?locale=en-US&amp;q=Create%20Joule%20Subscription%20and%20Instance">Joule CLI</a></li>
+<li>Create a new Global Account at  <a href="https://cp-control-client-uc2.cfapps.sap.hana.ondemand.com/index.html">BTP Cockpit Canary - Public Cloud Feature Set B"</a> with just letter/digits in the name.</li>
+</ul>
+<h2 id="to-run-this-journey">To run this journey..</h2>
+<ul>
+<li>git clone https://github.tools.sap/D061192/hackathonnotebooks.git</li>
+<li>jupyter lab hackathonnotebooks/docs/JouleScriptsREADME.ipynb</li>
+<li><strong>select the Bash Kernel</strong> in Jupyter</li>
+<li>then go through the steps below in jupyter</li>
+</ul>
+<h2 id="videos-of-this-journey-are-here">Videos of this journey are here..</h2>
+<ul>
+<li><a href="https://video.sap.com/media/t/1_7uf1htz4">Installing Joule on BTP in 6 minutes</a></li>
+<li><a href="https://video.sap.com/media/t/1_a73j5jyz">Using Joule on BTP in 5 minutes</a></li>
+<li><img alt="Screenshot 2024-07-10 at 16.12.10.png" src="e436aa7d-90fe-403d-85cb-da2fbdb21a16.png"></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="confirm-you-can-call-joule-and-btp">Confirm you can call joule and btp</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># Both commands must execute ok to continue..
+echo "If Joule CLI is installed this will run ok.."
+joule -V
+echo "If BTP CLI is installed, this will run ok.."
+btp
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="personalize-then-run-this-code-block">Personalize then run this code block</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">export BTPGLOBALACCOUNT=20240715c
+export BTP_MY_EMAIL=ken.lomax@sap.com
+
+echo "BTPGLOBALACCOUNT must be the name of your new empty Global Subaccount, and BTP_MY_EMAIL must be your email. Please confirm these are correct before proceeding:"
+echo "BTPGLOBALACCOUNT: $BTPGLOBALACCOUNT"
+echo "BTP_MY_EMAIL: $BTP_MY_EMAIL"
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="run-this-script-on-a-mac-to-install-joule-on-btp-in-5-minutes">Run this script (on a Mac) to install Joule on BTP in ~5 minutes</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">echo "=====Joule Setup: Logging out of btp"
+btp logout
+
+echo "=====Joule Setup: Logging into your global account on btp"
+btp login --sso --url https://canary.cli.btp.int.sap --subdomain $BTPGLOBALACCOUNT
+
+echo "=====Joule Setup: Getting the ID of your new globale account"
+btp get accounts/global-account --global-account $BTPGLOBALACCOUNT
+export BTP_GLOBAL_ACCOUNT_ID=`btp get accounts/global-account --global-account $BTPGLOBALACCOUNT | grep "global account id" | awk '{print $4;}'` 
+echo "=====Joule Setup: BTP_GLOBAL_ACCOUNT_ID: " $BTP_GLOBAL_ACCOUNT_ID
+
+echo "=====Joule Setup: Setting up a new EU10 subaccount"
+btp create accounts/subaccount --region eu10-canary --subdomain EU10$BTPGLOBALACCOUNT --display-name EU10$BTPGLOBALACCOUNT
+
+# List the new subaccount(s) and wait for the state OK
+echo "=====Joule Setup: Waiting forthe subaccount to be deployed..."
+until [ "`btp list accounts/subaccount | grep "EU10" | awk '{print $9;}'`" = "OK" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Getting the ID of EU10_SUBACCOUNT"
+export BTP_EU10_SUBACCOUNT_ID=`btp list accounts/subaccount | grep EU10 | awk '{print $1;}'`
+echo "BTP_EU10_SUBACCOUNT_ID is:" $BTP_EU10_SUBACCOUNT_ID
+
+echo "=====Joule Setup: Enabling CLoud Foundry in EU10 subaccount"
+btp create  accounts/environment-instance --subaccount $BTP_EU10_SUBACCOUNT_ID --environment cloudfoundry --service cloudfoundry --plan standard --parameters "{\"instance_name\":\"cfeu10$BTPGLOBALACCOUNT\"}"
+
+echo "=====Joule Setup: Waiting until cloud foundry is active"
+btp list accounts/environment-instance --subaccount $BTP_EU10_SUBACCOUNT_ID
+until [ "`btp list accounts/environment-instance --subaccount $BTP_EU10_SUBACCOUNT_ID | grep "eu10" | awk '{print $4;}'`" = "OK" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Adding additional-tenant entitlement for the service Cloud Identity Services to our EU10 sub account"
+btp assign accounts/entitlement --to-subaccount $BTP_EU10_SUBACCOUNT_ID --for-service sap-identity-services-onboarding   --plan additional-tenant --enable true
+until [ "`btp list accounts/entitlement --subaccount $BTP_EU10_SUBACCOUNT_ID | grep sap-identity-services-onboarding  | awk '{print $1;}'`" = "sap-identity-services-onboarding" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Subscribing to the Cloud Identity Services additional-tenant plan"
+btp subscribe accounts/subaccount --subaccount $BTP_EU10_SUBACCOUNT_ID --to-app sap-identity-services-onboarding --plan additional-tenant --parameters "{ \"cloud_service\": \"PRODUCTIVE\" }"
+
+echo "=====Joule Setup: Waiting until we see state OK"
+until [ "`btp list accounts/environment-instance --subaccount $BTP_EU10_SUBACCOUNT_ID | grep "eu10"  | awk '{print $4;}'`" = "OK" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Waiting until the status is SUBSCRIBED"
+until [ "`btp get accounts/subscription --subaccount $BTP_EU10_SUBACCOUNT_ID --of-app sap-identity-services-onboarding --plan additional-tenant | grep "status"  | awk '{print $2;}'`" = "SUBSCRIBED" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Getting the Trust URL"
+export BTP_TRUST_URL=`btp get accounts/subscription --subaccount $BTP_EU10_SUBACCOUNT_ID --of-app sap-identity-services-onboarding --plan additional-tenant | grep "application url"  | sed 's#https://##g' | sed 's#/admin##g' | awk '{print $3;}'` 
+echo "=====Joule Setup: Trust URL: " $BTP_TRUST_URL
+
+echo "=====Joule Setup: Creating a subaccount in EU12"
+btp create accounts/subaccount --region eu12 --subdomain EU12$BTPGLOBALACCOUNT --display-name EU12$BTPGLOBALACCOUNT
+
+echo "=====Joule Setup: Waiting for the new subaccount EU12 to be active"
+btp list accounts/subaccount
+until [ "`btp list accounts/subaccount | grep "EU12" | awk '{print $9;}'`" = "OK" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Getting the ID of the new EU12 Subaccount"
+export BTP_EU12_SUBACCOUNT_ID=`btp list accounts/subaccount | grep EU12 | awk '{print $1;}'`
+echo "=====Joule Setup: BTP_EU12_SUBACCOUNT_ID is:" $BTP_EU12_SUBACCOUNT_ID
+
+echo "=====Joule Setup: Enabling Cloud Foundry on your EU12 subccount"
+btp create  accounts/environment-instance --subaccount $BTP_EU12_SUBACCOUNT_ID --environment cloudfoundry --service cloudfoundry --plan standard --landscape cf-eu12 --parameters "{\"instance_name\":\"cfeu12$BTPGLOBALACCOUNT\"}"
+
+echo "=====Joule Setup: Waiting until Cloud Foundry is ready"
+btp list accounts/environment-instance --subaccount $BTP_EU12_SUBACCOUNT_ID
+until [ "`btp list accounts/environment-instance --subaccount $BTP_EU12_SUBACCOUNT_ID | grep "eu12" | awk '{print $4;}'`" = "OK" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Adding entitlement to Joule das-service-canary"
+btp assign accounts/entitlement --to-subaccount $BTP_EU12_SUBACCOUNT_ID --for-service das-service-canary --plan designer --amount 1
+
+echo "=====Joule Setup: Adding entitlement to Joule das-application-canary"
+btp assign accounts/entitlement --to-subaccount $BTP_EU12_SUBACCOUNT_ID --for-service das-application-canary --plan development --enable true 
+
+echo "=====Joule Setup: Establishing trust with the additional-tenant on EU10"
+btp create security/trust --idp $BTP_TRUST_URL --subaccount $BTP_EU12_SUBACCOUNT_ID --domain $BTP_TRUST_URL --name $BTP_TRUST_URL
+
+echo "=====Joule Setup: Subscribing to Joule"
+btp subscribe accounts/subaccount --subaccount $BTP_EU12_SUBACCOUNT_ID  --to-app das-application-canary-ias --plan development
+
+echo "=====Joule Setup: Waiting until the status is SUBSCRIBED" 
+btp list accounts/subscription --subaccount $BTP_EU12_SUBACCOUNT_ID  | grep das-application-canary-ias
+until [ "`btp list accounts/subscription --subaccount $BTP_EU12_SUBACCOUNT_ID  | grep das-application-canary-ias | awk '{print $8;}'`" = "SUBSCRIBED" ]
+do 
+    sleep 5; 
+    echo -n "waiting.."
+done
+
+echo "=====Joule Setup: Creating SAP Digital Assistant instance"
+btp create services/instance --subaccount $BTP_EU12_SUBACCOUNT_ID --service das-service-canary --plan-name  designer --offering-name das-service-canary
+
+echo "=====Joule Setup: Noting the BTP_TRUST_EU12_URL as we need it later."
+export BTP_TRUST_EU12_URL=`btp list services/instance --subaccount $BTP_EU12_SUBACCOUNT_ID | grep das-service-canary | awk '{print $2;}'`
+echo "=====Joule Setup: BTP_TRUST_EU12_URL" $BTP_TRUST_EU12_URL
+
+echo "=====Joule Setup: Creating Service Binding to the SAP Digital Assistant"
+btp create services/binding --subaccount $BTP_EU12_SUBACCOUNT_ID --binding mybinding --service-instance $BTP_TRUST_EU12_URL
+
+echo "=====Joule Setup: Getting the JOULE APP URL and store in the env variable BTP_JOULE_APP"
+export BTP_JOULE_APP=`btp list accounts/subscription --subaccount $BTP_EU12_SUBACCOUNT_ID| grep as-application-canary-ias | awk '{print $9;}'` 
+echo "=====Joule Setup: BTP_JOULE_APP" $BTP_JOULE_APP
+
+echo "=====Joule Setup: Extracting the environment variables we will use to run sapdas login.."
+export BTP_JOULE_AUTHURL=`btp get services/binding --subaccount $BTP_EU12_SUBACCOUNT_ID --name mybinding | grep " url:" | awk '{print $2;}'`
+export BTP_JOULE_CLIENTSECRET=`btp get services/binding --subaccount $BTP_EU12_SUBACCOUNT_ID --name mybinding | grep "clientsecret" | awk '{print $2;}'`
+export BTP_JOULE_CLIENTID=`btp get services/binding --subaccount $BTP_EU12_SUBACCOUNT_ID --name mybinding | grep "clientid" | awk '{print $2;}'`
+export BTP_XSAPPNAME=`btp get services/binding --subaccount $BTP_EU12_SUBACCOUNT_ID --name mybinding | grep " xsappname:" | awk '{print $2;}'`
+export BTP_DASAPPID=`btp get services/binding --subaccount $BTP_EU12_SUBACCOUNT_ID --name mybinding | grep " xsappname:" | awk '{print $2;}'  | cut -d'|' -f2 `
+
+echo "=====Joule Setup: BTP_JOULE_AUTHURL: " $BTP_JOULE_AUTHURL
+echo "=====Joule Setup: BTP_JOULE_CLIENTSECRET: " $BTP_JOULE_CLIENTSECRET
+echo "=====Joule Setup: BTP_JOULE_CLIENTID: " $BTP_JOULE_CLIENTID
+echo "=====Joule Setup: BTP_XSAPPNAME: " $BTP_XSAPPNAME
+echo "=====Joule Setup: BTP_DASAPPID: " $BTP_DASAPPID
+
+echo "=====Joule Setup: Adding a role collection for ourselves with capability_release_admin and capability_developer rights.."
+btp create security/role-collection joulesuperpowers --description joulesuperpowers --subaccount $BTP_EU12_SUBACCOUNT_ID
+btp add security/role capability_developer --to-role-collection joulesuperpowers --of-app $BTP_XSAPPNAME --of-role-template capability_developer --subaccount $BTP_EU12_SUBACCOUNT_ID
+btp add security/role capability_release_admin --to-role-collection joulesuperpowers --of-app $BTP_XSAPPNAME --of-role-template capability_release_admin --subaccount $BTP_EU12_SUBACCOUNT_ID
+btp add security/role end_user --to-role-collection joulesuperpowers --of-app $BTP_DASAPPID --of-role-template end_user --subaccount $BTP_EU12_SUBACCOUNT_ID
+btp assign security/role-collection joulesuperpowers --to-user $BTP_MY_EMAIL --of-idp sap.default --subaccount $BTP_EU12_SUBACCOUNT_ID
+
+echo "=====Joule Setup: If you saw no errors, setup is complete."
+echo "=====Joule Setup: You can now log into joule with.."
+echo "=====Joule Setup:  Copy and paste the following command 'joule login...' into a terminal, to login into joule.."
+echo "joule login --apiurl $BTP_JOULE_APP --default-idp --authurl $BTP_JOULE_AUTHURL --clientid '$BTP_JOULE_CLIENTID' --clientsecret '$BTP_JOULE_CLIENTSECRET' --username $BTP_MY_EMAIL"
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="log-into-joule">Log into Joule...</h2>
+<p>Copy and paste the "joule login ..." command printed above, into a terminal to log into joule</p>
+<h2 id="confirm-you-are-logged-into-joule">Confirm you are logged into joule</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule status
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="import-this-destination-in-your-btp-subaccount">Import this Destination in your BTP Subaccount</h2>
+<p>Write the destination details to a file so we can then import it into btp..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">cat &amp;lt;&lt;eot&gt;&amp;gt; destination.txt
+Name=WEATHER 
+URL=https://api.weather.com/v3 
+ProxyType=Internet 
+Type=HTTP 
+URL.queries.apiKey=c322ef22435d40bfa2ef22435df0bfbe 
+Authentication=NoAuthentication 
+EOT
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="import-the-destination-into-btp">Import the Destination into btp</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># Run then follow the output instruction..
+echo "Go to https://canary.cockpit.btp.int.sap/cockpit/#/globalaccount/$BTP_GLOBAL_ACCOUNT_ID/subaccount/$BTP_EU12_SUBACCOUNT_ID/destinations and import the file $(pwd)/destination.txt"
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="destination.png" src="4a16d6c2-07cc-461a-876b-83c8e2662980.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="clone-the-joule-demo-repo">Clone the joule demo repo</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Create a token at https://github.tools.sap/settings/tokens with repo rights and export to MY_GITHUB_TOKEN:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">#export MY_GITHUB_TOKEN=your_github_token_with_repo_right
+export MY_GITHUB_TOKEN=xxx
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Clone and run the Joule demo app:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">echo "=====Joule Setup: cloning "
+git clone https://$MY_GITHUB_TOKEN@github.tools.sap/DAS-Samples/da-mc-developers-hands-on
+pushd da-mc-developers-hands-on
+
+echo "=====Joule Setup: switching branch"
+git checkout 7-Weather-Dialog-Functions
+pushd my_first_assistant
+
+echo "=====Joule Setup: Deploying Joule"
+joule deploy my_first_assistant.da.sapdas.yaml --compile
+
+echo "=====Joule Setup: Trying out Joule"
+joule dialog my_first_assistant "What is the weaether like in Munich?"
+joule dialog my_first_assistant "Would I need an umbrella in Paris today or would shorts be fine?"
+joule dialog my_first_assistant "I love Barry Manilow"
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="launch-joule">Launch Joule:</h1>
+<p>Run the following command and follow this path to reach your joule app..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-07-17 at 16.19.53.png" src="42874bb8-6aae-4004-ab9a-db59c0d816b2.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule launch my_first_assistant
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="what-is-going-on">What is going on?</h2>
+<h3 id="from-30000-feet">From 30000 feet</h3>
+<p>This Joule code creates a chatbot that:</p>
+<ul>
+<li>answers <strong>human-like</strong> queries about the weather in a defined set of cities</li>
+<li>does not, as designed, support other general queries</li>
+</ul>
+<p>For example:
+- "How is the weather in Paris"
+- "How's it looking in Paris today?"
+- "What temperature in Paris are we talking about?" .. should all return an answer similar to "The weather in Paris is 28 degrees with a slight chance of rain"</p>
+<p>Other queries like "What is your name" should result in "I cannot help you with your query"</p>
+<p><img alt="joule1.png" src="d8da557b-9f9a-4d63-aad0-758ef80f8be3.png"></p>
+<h3 id="from-20000-feet">From 20000 feet</h3>
+<p>In Joule's lingo..</p>
+<ul>
+<li>Our topic ("<strong>Capability</strong>") that we are choosing to support is "Weather"</li>
+<li>The user may express an <strong>Intent</strong> to enquire about the Weather. If so, Joule should recognise that intent, and act upon it.</li>
+<li>The <strong>Entity</strong> we need to extract from this <strong>Intent</strong> is the "city" </li>
+<li>We define a <strong>Destination</strong> REST endpoint for retrieving the weather report for that city (api.weather.com)</li>
+<li>There can be more than one capability, intent, entity, destination, but we will have just one of each..</li>
+<li>The Joule conversation flows through <strong>Nodes</strong></li>
+<li>Nodes are arranged in trees, and are invoked if their <strong>condition</strong> is met</li>
+<li>Our conversation will consist of 3 nodes:<ul>
+<li>a "root" node <strong>fetch_weather</strong> to be invoked when a weather "Intent" is recognised, which should then</li>
+<li>extract the city from the intent</li>
+<li>call a REST API to get the weather</li>
+<li>store the answer </li>
+<li>and then either</li>
+<li>a node <strong>display_weather</strong> to be invoked when we have a successful answer from fetch_weather node, that returns a message to the user with the weather</li>
+<li>a node <strong>display_error</strong> to be invoked when we have a failure from fetch_weather node</li>
+</ul>
+</li>
+</ul>
+<p><img alt="joule2.png" src="89181273-b13a-46ae-bfd6-753a627e85bc.png"></p>
+<h3 id="from-1000-feet">From 1000 feet</h3>
+<p>Compare the source code with this:</p>
+<p><img alt="joule3a.png" src="925775d7-dd0d-4ed1-843c-01023ccb219c.png"></p>
+<h3 id="from-ground-level">From Ground level</h3>
+<p>Go through the source code :)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="to-run-in-debug-mode">To run in debug mode..</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In our demo app we login with IAS user, so to run Joule in debug mode, we need to add capability_developer role to our IAS user (and not only default IdP user).</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash"># List the users of your custom identity provider
+btp list security/user --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID 
+# We want the one xxx-xxx-xx
+btp list security/user --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID | head -2 | tail -1
+export BTP_EU12_IDP_USER_ID=`btp list security/user --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID | head -2 | tail -1`
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Store the ID of this new subaccount as the env variable BTP_EU12_SUBACCOUNT_ID</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">echo "BTP_EU12_IDP_USER_ID is:" $BTP_EU12_IDP_USER_ID
+# Assign our role-collection to our IAS user 
+btp assign security/role-collection joulesuperpowers --to-user $BTP_EU12_IDP_USER_ID --of-idp sap.custom --subaccount $BTP_EU12_SUBACCOUNT_ID
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Relaunch Joule in cognito mode (to ignore stale cookies)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">joule launch my_first_assistant
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should then see a debug button in the joule client window</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="Screenshot 2024-06-27 at 09.38.22.png" src="f2669abe-20fb-44fc-964f-185c0135868b.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="next-steps">Next steps:</h2>
+<ul>
+<li>Try the Joule IDE plugin @ https://help.sap.com/docs/joule/service-guide/joule-ide-extension?locale=en-US</li>
+<li>Joule docu: https://wiki.one.int.sap/wiki/display/OPECFKM/Joule</li>
+<li>Using Joule's Web Client is described here: https://github.tools.sap/DAS/webclient</li>
+</ul>
+<h2 id="further-examples">Further examples:</h2>
+<ul>
+<li>Errors during installation -&gt; https://itsm.services.sap/sp?id=sc_category</li>
+<li>Study the Joule tutorial in more depth at https://github.tools.sap/DAS-Samples/da-mc-developers-hands-on</li>
+<li><a href="https://sap.sharepoint.com/sites/102567/_layouts/15/stream.aspx?id=%2Fsites%2F102567%2FShared%20Documents%2F2%2E%20Solution%20Assets%2FJoule%2FEnablement%20tutorials%2F%5BAI%40SLF%5D%20Chocolearn%2D20231205%5F163131%2DMeeting%20Recording%2Emp4&amp;referrer=StreamWebApp%2EWeb&amp;referrerScenario=AddressBarCopied%2Eview%2Eae40a47e%2D97ac%2D46c7%2Dba4a%2Dcda0d3d15524">Video demoing how to create an initial Joules and Chuck Norris chat</a> </li>
+<li><a href="https://sap.sharepoint.com/:v:/r/sites/102567/Shared%20Documents/2.%20Solution%20Assets/Joule/Enablement%20tutorials/SAP%20Digital%20Assistant%20-%20Adding%20a%20Weather%20Capability.mp4?csf=1&amp;web=1&amp;e=Lpk1vJ">Video demoing how to add a Weather Capability by Timothy Jannsen and Nathan Droba</a> and <a href="https://workzone.one.int.sap/site#workzone-home&amp;/groups/bj5ax8gAxEkFxGXcO8EIWK/workpage_tabs/aVDrYRMybHgAyWmmyb5mRk">setup</a></li>
+<li>HackAiThon PoC from Team Mind Flayers @</li>
+<li>Using<ul>
+<li>Destination</li>
+<li>URL=https\://backoffice.xxxx.model-t.myhybris.cloud/odata2webservices</li>
+<li>Name=D43_COMMERCE</li>
+<li>ProxyType=Internet</li>
+<li>Type=HTTP</li>
+<li>Authentication=BasicAuthentication</li>
+<li>User=admin</li>
+</ul>
+</li>
+<li>https://wiki.one.int.sap/wiki/display/prodandtech/AI+Talk%3A+Building+a+CX+Integration+Assistant+with+Joule</li>
+<li>https://wiki.one.int.sap/wiki/display/prodandtech/HackAIthon+PoC+from+Team+Mind+Flayers</li>
+<li>This journey was constructed by following various documents from [here](https://help.sap.com/docs/joule/service-guide/initial-set-up?</li>
+</ul>
+<h2 id="joules-faq-forum">Joules FAQ Forum:</h2>
+<ul>
+<li>Questions on Joule: ask questions on stackenterprise, and add a joule tag:  https://sap.stackenterprise.co/
+locale=en-US)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-bash">
+</code></pre>
+
+
+</div>
+</div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>

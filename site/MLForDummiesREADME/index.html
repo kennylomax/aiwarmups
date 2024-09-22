@@ -1,0 +1,1046 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../TrainingAndUsingMLInMinutesREADME/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>ML For Dummies - AI Warmups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ml-for-dummies-leveraging-ml-models-in-your-application-in-minutes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI Warmups" class="md-header__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Warmups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ML For Dummies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI Warmups" class="md-nav__button md-logo" aria-label="AI Warmups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AI Warmups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ML For Dummies
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TrainingAndUsingMLInMinutesREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training and using ML Models in Minutes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HowNNsLearnREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Neural Networks Learn 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ChattingWithYourDataREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatting with your Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleDockerREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Joule with Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NEAT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neat from the ground up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ReinforcementLearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleScriptsREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Scripted)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JouleREADME/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (Installing Joule on BTP Manually)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<html><head><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+</head><body><div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img alt="AIwarmups.png" src="cf7f9e02-409f-423e-a1fc-fb43f99c2201.png"></p>
+<p>On github @ <a href="https://github.tools.sap/D061192/hackathonnotebooks">Github Docu</a></p>
+<h1 id="ml-for-dummies-leveraging-ml-models-in-your-application-in-minutes">ML for Dummies - leveraging ML models in your application in minutes</h1>
+<p>To run this journey yourself:</p>
+<ul>
+<li>install python: https://www.python.org  </li>
+<li>install Jupyter: https://jupyter.org/install</li>
+<li>git clone https://github.tools.sap/D061192/hackathonnotebooks.git</li>
+<li>jupyter lab hackathonnotebooks/docs/MLForDummiesREADME.ipynb</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="intro">Intro</h1>
+<p>You don't need to be an AI/ML wizard to use ML models in your applications - in fact it is surprisingly easy.</p>
+<p>In this demo, we will create and deploy an app, that supports text sentiment analyis, image recognition and handwriting recognition, and is ready for you to wrap with your own business logic, using:
+- <a href="https://jupyter.org/">Jupyter Labs</a> (A next-generation notebook/tutorial interface)
+- <a href="https://huggingface.co/docs/hub/index">Hugging Face</a> (The Hugging Face Hub is a platform with over 350k models, 75k datasets, and 150k demo apps (Spaces), all open source and publicly available, in an online platform where people can easily collaborate and build ML together.)
+- <a href="https://www.gradio.app/">Gradio</a> (Gradio is the fastest way to demo your machine learning model with a friendly web interface so that anyone can use it, anywhere!)</p>
+<h1 id="_1"><img alt="overview2.png" src="e2995df0-2614-4c98-93ae-2bf64cf933b4.png"></h1>
+<h1 id="prerequisites-to-follow-this-journey-yourself">Prerequisites to follow this journey yourself:</h1>
+<ul>
+<li>create an account on HuggingFace: https://huggingface.co/docs/hub/index</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="background-to-jupyter-notebooks">Background to Jupyter Notebooks......</h1>
+<p>Jupyter pages are opened inside Jupyter Labs, and consist of a series of blocks/cells of code or markdown. 
+- This paragraph is part of a markdown block. 
+- The one below is a code block..  Code blocks can be RUN directly IN THE PAGE! :)
+- To <strong>run a code cell</strong>: Click inside it, then Shift-enter (or play button)
+- To <strong>edit a code cell</strong>: Double-click, then Shift-enter to leave edit mode </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!ls
+!pwd
+print("HI there")
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Some examples of what can be done in Jupyter Lab Code Blocks....
+# This is a code block, with code and comments:
+# Lines that start with a # are comments
+
+# This next line is a command that runs in python (because we are, by default, in a python Jupyter kernel):
+print ("Hi there")
+# Use a % to run OS commands, for example:
+!pwd
+!ls -la
+# To run this code block, click in it, and then click the "play" button at the top. You will then see the output printed below this block...
+# If you want to clear the page, select Kernel-&amp;gt;"Restart Kernel and Clear Outputs of All Cells..." -&amp;gt; Restart
+# You can also store env variables (which we will see later), for example:
+import os
+os.environ['SOME_ENVIRONMENT_VARIABLE'] = "Jupyter Labs are cool! It mixed docu with code on one page.."
+!echo ${SOME_ENVIRONMENT_VARIABLE}
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h1 id="journey">Journey</h1>
+<h2 id="explore-hugging-face">Explore Hugging Face</h2>
+<p><a href="https://huggingface.co/docs/hub/index">Hugging face</a> is a portal for hosting and sharing ML Models and websites. We will be using some of the ML models that are available there, specifically:</p>
+<ul>
+<li><a href="https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest">sentiment analysis</a> </li>
+<li><a href="https://huggingface.co/facebook/convnext-xlarge-384-22k-1k">image recognition</a></li>
+<li><a href="https://huggingface.co/microsoft/trocr-base-handwritten">hand writing recognition</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="create-a-hugging-face-token">Create a Hugging Face token</h2>
+<p>To access the REST endpoints of these models, we need a Hugging Face Token with WRITE permission:
+- Go to <a href="https://huggingface.co/settings/tokens?new_token=true">https://huggingface.co/settings/tokens?new_token=true</a> and create a token with <strong>WRITE</strong> permission</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Replace xxx below with your Hugging Face Token, and then run this block to store the token as an environment variable (1) named HACKAITHONBEARERTOKEN
+
+import os
+os.environ['HACKAITHONBEARERTOKEN'] = "Bearer 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"
+!echo ${HACKAITHONBEARERTOKEN}
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="write-code-to-call-the-sentiment-analysis-model">Write code to call the Sentiment Analysis Model</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Open <a href="https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest">sentiment analysis</a> and follow this clickpath:<br>
+<img alt="hfcode.png" src="3a0fc2c2-2c6b-4ab7-b482-0b3bce8c6882.png"></p>
+<p><br>Hugging Face will show you what code is necessary to call each model. In this case we will be calling the sentiment analysis model:<br></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Replace with your token, add a print statement,  and then run..
+import requests
+
+API_URL = "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment-latest"
+headers = {"Authorization": "Bearer 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"}
+
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()
+
+output = query({
+    "inputs": "I feel super sad because Siggy just told me a joke!",
+})
+print (output)
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can take this code and adapt it so that:
+- we remove the hardcoded token and instead take if from the environment variable we stored earlier
+- we print out some results</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Run this code block, and you should see (after ~10 seconds) that the ML model is called.
+import requests
+import os
+
+# The API Endpoint of the twitter-roberta-base-sentiment ML Model, that we got from (2) above
+API_URL = "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment"
+
+# Instead of hardcoding the token, we fetch it from the environment variable where we stored it earlier (1)
+bt = os.environ['HACKAITHONBEARERTOKEN']
+headers = {"Authorization": bt }
+
+# Call the ML Model's endpoint, passing in some text
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()  
+
+# Try out the model with 2 values:
+output = query({ "inputs": "I feel amazing - totally over the moon!"})
+print (output)
+
+output = query({ "inputs": "I feel terrible, so sad:("})
+print (output)
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="write-a-small-web-app-to-wrap-this-logic-with-a-friendly-ui">Write a small web app to wrap this logic with a friendly UI:</h2>
+<p>Python websites declare their dependencies, by convention, in a requirements.txt file: </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">%cd ~
+%mkdir hackaithon101
+%cd hackaithon101
+
+# Declare the dependencies
+requirementscode="""
+gradio==4.29.0
+requests
+fastai
+"""
+f = open( 'requirements.txt', 'w' )
+f.write(requirementscode )
+f.close()
+
+!pwd
+!ls -la
+!cat requirements.txt
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Install the dependencies
+!pip install -r requirements.txt
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will use GRadio and the code we wrote earlier to create the UI (2):</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!pwd
+servercode="""
+import gradio as gr
+import requests
+import os
+
+API_URL = "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment"
+
+bt = os.environ['HACKAITHONBEARERTOKEN']
+headers = {"Authorization": bt }
+
+def query(data):
+    response = requests.post(API_URL, headers=headers, json=data)
+    return "V2"+str(response.json())
+
+def greet(howareyoufeeling):
+    output = query({"inputs":howareyoufeeling})
+    print (str(output))
+    return str(output)
+
+iface = gr.Interface(
+  fn=greet, inputs=["text"], outputs="text",  allow_flagging="never")
+iface.launch()
+"""
+f = open( 'app.py', 'w' )
+f.write(servercode)
+f.close
+
+!pwd
+!ls -la
+!cat app.py 
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="run-your-application">Run your application</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">%run -i 'app.py' 
+# Wait a few seconds, and you should see the website's UI appear below..
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="calling-via-api">Calling via API</h3>
+<p>Explore the "Use Via API" option that should appear above</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Try opening your site via your browser at the url shown..</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Try calling it using the url described (adjust the port number)
+!curl 'http://127.0.0.1:7860/run/predict' \
+  -H 'Content-Type: application/json' \
+  --data-raw '{"data":["This is super fun!"]}'
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="deploy-your-app">Deploy your app</h2>
+<h3 id="create-a-hugging-face-space">Create a Hugging Face Space</h3>
+<p>We will deploy this app to Hugging Face.  To do that we first need to create a new <a href="https://huggingface.co/spaces">Hugging Face Space</a>, which in this case we will call "hackaithon101"</p>
+<p><img alt="h101.png" src="ea6db74b-6bc4-4e2f-bc54-b917b899cb26.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="place-your-token-in-a-hugging-face-secret">Place your token in a Hugging Face Secret</h4>
+<p>We need to place our token in a hugging face secret so that it is secure.  Code running in hugging face will then be able to access that secret as a "normal environment variable".  <br>
+In our example, the name should be HACKAITHONBEARERTOKEN and the value should be "Bearer &lt; HACKAITHONBEARERTOKEN &gt;" <strong>without the quotes</strong>: </p>
+<p><img alt="hfsecret.png" src="bf54196f-9ec0-4fb9-bea2-69792ef48773.png"></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="clone-your-hugging-face-space">Clone your Hugging Face Space:</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">%mkdir -p ~/hackaithon101/huggingfacerepo
+%cd ~/hackaithon101/huggingfacerepo
+!pwd
+!git clone https://huggingface.co/spaces/kenlomax/hackaithon101/
+!cd hackaithon101
+!pwd
+!ls -la
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Copy the app.py and requirements.txt files into hackaithon101:
+%cd ~/hackaithon101/huggingfacerepo/hackaithon101
+!cp ~/hackaithon101/app.py .
+!cp ~/hackaithon101/requirements.txt .
+!pwd
+!ls -la
+
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python"># Push the code to the hackaithon101 repo:
+# Personalize the next line : xxx should be your token
+!git remote set-url origin https://kenlomax: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@huggingface.co/spaces/kenlomax/hackaithon101
+# Push your changes to the hugging face repo:
+!git add .
+!git commit -m "oooo"
+!git push
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="try-your-app">Try your app!</h3>
+<p>You should soon see your website at https://huggingface.co/spaces/&lt; yourname &gt;/hackaithon101</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="extend-the-app-to-call-the-other-2-models-too">Extend the app to call the other 2 models too</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">%cd ~/hackaithon101/huggingfacerepo/hackaithon101
+!pwd
+!ls -latr
+
+servercode="""
+import gradio as gr
+import requests
+import os
+
+API_URL1 = "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment"
+API_URL2 = "https://api-inference.huggingface.co/models/facebook/convnext-xlarge-384-22k-1k"
+API_URL3 = "https://api-inference.huggingface.co/models/microsoft/trocr-base-handwritten"
+
+bt = os.environ['HACKAITHONBEARERTOKEN']
+headers = {"Authorization": bt }
+
+def query(mood, select_model, filepath):
+
+    print (select_model);
+    print (filepath);
+
+
+    if (select_model=="Sentiment"):
+        response = requests.post(API_URL1, headers=headers, json=mood)
+    elif (select_model=="WhatIsThat"):
+        data = open(filepath, 'rb' ).read()
+        response = requests.post(API_URL2, headers=headers, data=data)
+    else:
+        data = open(filepath, 'rb' ).read()
+        response = requests.post(API_URL3, headers=headers, data=data)
+    return str(response.json())
+
+def greet(mood,select_model,image):
+    output = query({"inputs":mood}, select_model, image)
+    print (str(output))
+    return str(output)
+
+iface = gr.Interface(
+  fn=greet, inputs=["text", gr.Radio(choices=["Sentiment", "WhatIsThat", "HandWriting"],value="Sentiment"),gr.Image(type="filepath")], outputs="text")
+iface.launch()
+"""
+f = open( 'app.py', 'w' )
+f.write(servercode )
+f.close()
+!ls -latr
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="push-the-changes-up-to-hugging-face">Push the changes up to Hugging Face</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">!git add .
+!git commit -m "oooo"
+!git push
+</code></pre>
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="try-your-app-again">Try your app again</h4>
+<p>You should soon see your website at https://huggingface.co/spaces/&lt; yourname &gt;/hackaithon101</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="delete-your-hugging-face-token">Delete your Hugging Face token</h3>
+<p>If you are not going to use it anymore delete your tokens (and spaces) at <a href="https://huggingface.co/settings/tokens">https://huggingface.co/settings/tokens</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="next-steps">Next steps</h1>
+<ul>
+<li>Explore which (other) ML Models you  might use</li>
+<li>Add your own business logic before/after you make calls to the ML Models</li>
+<li>Use and contribute to our <a href="https://enablement2024.a9ab9c7.stage.kyma.ondemand.com/" target="_blank">Crowdsourced Upskilling Portal</a>, where we all share our favourite upskilling links and upskilling paths:<br>
+<a href="https://enablement2024.a9ab9c7.stage.kyma.ondemand.com/" target="_blank">here</a>
+  <img alt="cu1.png" src="520eb8ca-6358-4e93-b894-86aba031cc25.png"><br></li>
+<li>Sign up for the Hack-AI-Thon and watch out for future Hack-AI-Thon Warmup Talks :)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<pre><code class="language-python">
+</code></pre>
+
+
+</div>
+</div></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
