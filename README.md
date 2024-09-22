@@ -2,4 +2,4 @@
 
 This is part of the AI Warmup series of demos/workshops.
 
-Documentation @ https://pages.github.tools.sap/D061192/hackathonnotebooks/
+Documentation @ [https://pages.github.tools.sap/D061192/hackathonnotebooks/](https://kennylomax.github.io/aiwarmups/)
